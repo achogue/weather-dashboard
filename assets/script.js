@@ -3,21 +3,24 @@ var city;
 var lon;
 var lat;
 var today = dayjs();
-const storageInput = document.querySelector("input");
-h2 = document.querySelector("h2");
+const storageInput = document.querySelector("input"),
+    h2 = document.querySelector("h2");
 
+// search.addEventListener("keyup", display);
 // localStorage.setItem('keyName', input.value)
+// localStorage.getItem('keyName')
 
 
 $( "#btnSearch" ).click(function() {
     city = $("#search").val();
     var weatherCityAPI = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=" + APIkey 
 
-    const saveToLocalStorage = () => {
-        localStorage.setItem(storageInput);
-    }
+ function display() {
+    localStorage.setItem('value', input.value);
+    h2.innerHTML = localStorage.getItem("value");
+ }
 
-    btnSearch.addEventListener('click', saveToLocalStorage);
+    // btnSearch.addEventListener('click', saveToLocalStorage);
 
     $.getJSON(weatherCityAPI, function(json){
         console.log(json.coord.lat);
